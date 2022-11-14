@@ -1,5 +1,6 @@
 import requests
 
+
 def status_decorator(func):
     def status_and_data_check(*args,**kwargs):
         r=func(*args,**kwargs)
@@ -11,9 +12,9 @@ def status_decorator(func):
     return status_and_data_check
 
 
-class electricity_prices:
+class ElectricityPrices:
     def __init__(self):
-        self.headers =  { "Accept": "application/json" }
+        self.headers ={"Accept": "application/json"}
         self.basic_endpoint="https://odegdcpnma.execute-api.eu-west-2.amazonaws.com/development/prices?"
 
     @status_decorator
@@ -26,5 +27,5 @@ class electricity_prices:
 
 
 
-ele=electricity_prices()
+ele=ElectricityPrices()
 prices=ele.get_prices(12,"HVE","10-11-2022","12-11-2022")
